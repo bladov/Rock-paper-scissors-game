@@ -1,4 +1,5 @@
 # .
+## Gh-pages https://bladov.github.io/Rock-paper-scissors-game/
 
 This template should help get you started developing with Vue 3 in Vite.
 

@@ -1,47 +1,49 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import HeaderWrapper from '@/components/layout/header/HeaderWrapper.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    <HeaderWrapper />
   </header>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <main></main>
+
+  <footer></footer>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
+<style lang="scss">
+@import '@/assets/scss/main.scss';
+
+body {
+  background: rgb(31, 55, 86);
+  background: radial-gradient(circle, rgba(31, 55, 86, 1) 6%, rgba(20, 23, 59, 1) 100%);
+  @include tablets {
+    background: red;
+  }
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.container {
+  max-width: 1270px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: 'Circe', sans-serif;
+  font-weight: 600;
+  font-size: 30px;
+  font-style: normal;
+  color: white;
+}
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
 }
 </style>
