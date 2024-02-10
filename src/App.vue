@@ -1,5 +1,6 @@
 <script setup>
 import HeaderWrapper from '@/components/layout/header/HeaderWrapper.vue'
+import GameChoice from '@/components/game-attribute/GameChoice.vue'
 </script>
 
 <template>
@@ -7,7 +8,9 @@ import HeaderWrapper from '@/components/layout/header/HeaderWrapper.vue'
     <HeaderWrapper />
   </header>
 
-  <main></main>
+  <main>
+    <GameChoice />
+  </main>
 
   <footer></footer>
 </template>
