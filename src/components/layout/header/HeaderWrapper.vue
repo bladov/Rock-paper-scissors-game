@@ -29,5 +29,8 @@ export default {
   border: 2px solid #5e6b83;
   border-radius: 20px;
   padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
 }
 </style>
