@@ -14,22 +14,14 @@ export default {
       <div class="game-choice__wrapper">
         <BgTriangle />
         <GameAction
-          color="#4865f4"
           action="paper"
           position-top="0"
           position-left="0"
           transform-x="-50%"
           transform-y="-50%"
         />
+        <GameAction action="rock" position-bottom="0" position-left="50%" transform-x="-50%" />
         <GameAction
-          color="#ec9e0e"
-          action="rock"
-          position-bottom="0"
-          position-left="50%"
-          transform-x="-50%"
-        />
-        <GameAction
-          color="#dc2e4e"
           action="scissors"
           position-top="0"
           position-right="0"

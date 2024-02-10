@@ -1,5 +1,5 @@
 <script>
-import { computed, toRefs } from 'vue'
+import { computed, ref, toRefs, watchEffect } from 'vue'
 import IconPaper from '@/components/icons/IconPaper.vue'
 import IconRock from '@/components/icons/IconRock.vue'
 import IconScissors from '@/components/icons/IconScissors.vue'
@@ -9,10 +9,6 @@ export default {
   components: { IconPaper, IconRock, IconScissors },
   props: {
     action: {
-      type: String,
-      required: true
-    },
-    color: {
       type: String,
       required: true
     },
@@ -50,22 +46,28 @@ export default {
 
   setup(props) {
     const { action } = toRefs(props)
+    const currentIconComponent = ref('')
+    const currentActionColor = ref('')
 
-    const currentIconComponent = computed(() => {
+    watchEffect(() => {
       switch (action.value) {
         case 'paper':
-          return 'IconPaper'
+          currentIconComponent.value = 'IconPaper'
+          currentActionColor.value = '#4865f4'
+          break
         case 'rock':
-          return 'IconRock'
+          currentIconComponent.value = 'IconRock'
+          currentActionColor.value = '#ec9e0e'
+          break
         case 'scissors':
-          return 'IconScissors'
-        default:
-          return 'IconPaper'
+          currentIconComponent.value = 'IconScissors'
+          currentActionColor.value = '#dc2e4e'
       }
     })
 
     return {
-      currentIconComponent
+      currentIconComponent,
+      currentActionColor
     }
   }
 }
@@ -87,7 +89,7 @@ export default {
   width: 100px;
   height: 100px;
   background: white;
-  border: 15px solid v-bind(color);
+  border: 15px solid v-bind(currentActionColor);
   border-radius: 50%;
 }
 
@@ -107,7 +109,6 @@ export default {
     display: block;
     width: 70%;
     height: 70%;
-    //background: green;
     border-radius: 50%;
     left: 50%;
     top: 50%;
@@ -116,12 +117,12 @@ export default {
   }
 
   &:hover {
-    filter: drop-shadow(0 0 0.75rem v-bind(color));
+    filter: drop-shadow(0 0 0.75rem v-bind(currentActionColor));
     scale: 1.02;
   }
 }
 
 .active {
-  filter: drop-shadow(0 0 0.75rem v-bind(color));
+  filter: drop-shadow(0 0 0.75rem v-bind(currentActionColor));
 }
 </style>
