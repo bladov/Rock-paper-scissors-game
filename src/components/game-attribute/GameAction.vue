@@ -1,5 +1,5 @@
 <script>
-import { computed, ref, toRefs, watchEffect } from 'vue'
+import { ref, toRefs, watchEffect } from 'vue'
 import IconPaper from '@/components/icons/IconPaper.vue'
 import IconRock from '@/components/icons/IconRock.vue'
 import IconScissors from '@/components/icons/IconScissors.vue'
@@ -82,20 +82,10 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.game-action__wrapper {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 100px;
-  height: 100px;
-  background: white;
-  border: 15px solid v-bind(currentActionColor);
-  border-radius: 50%;
-}
-
 .game-action {
-  cursor: pointer;
   position: absolute;
+  display: inline-flex;
+  cursor: pointer;
   top: v-bind(positionTop);
   left: v-bind(positionLeft);
   right: v-bind(positionRight);
@@ -122,7 +112,14 @@ export default {
   }
 }
 
-.active {
-  filter: drop-shadow(0 0 0.75rem v-bind(currentActionColor));
+.game-action__wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: white;
+  border: 15px solid v-bind(currentActionColor);
+  border-radius: 50%;
 }
 </style>

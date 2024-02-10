@@ -1,6 +1,7 @@
 <script setup>
 import HeaderWrapper from '@/components/layout/header/HeaderWrapper.vue'
 import GameChoice from '@/components/game-attribute/GameChoice.vue'
+import GameResult from '@/components/game-attribute/GameResult.vue'
 </script>
 
 <template>
@@ -10,6 +11,7 @@ import GameChoice from '@/components/game-attribute/GameChoice.vue'
 
   <main>
     <GameChoice />
+    <GameResult />
   </main>
 
   <footer></footer>
