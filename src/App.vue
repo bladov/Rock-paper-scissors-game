@@ -2,7 +2,7 @@
 import HeaderWrapper from '@/components/layout/header/HeaderWrapper.vue'
 import GameChoice from '@/components/game-attribute/GameChoice.vue'
 import GameResult from '@/components/game-attribute/GameResult.vue'
-import { reactive, watch } from 'vue'
+import { onMounted, reactive, watch } from 'vue'
 import { getGameResult } from '../utilits/getGameResult.js'
 
 const gameAttribute = reactive({
@@ -40,6 +40,18 @@ watch(
     }
   }
 )
+
+watch(
+  () => gameAttribute.score,
+  () => {
+    localStorage.setItem('score', `${gameAttribute.score}`)
+  }
+)
+
+onMounted(() => {
+  const score = parseInt(localStorage.getItem('score'))
+  gameAttribute.score = isNaN(score) ? 0 : score
+})
 </script>
 
 <template>
