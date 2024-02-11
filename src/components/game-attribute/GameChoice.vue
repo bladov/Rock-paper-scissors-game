@@ -84,6 +84,10 @@ export default {
   padding-top: 200px;
   display: flex;
   justify-content: center;
+
+  @include phone {
+    padding-top: 120px;
+  }
 }
 
 .game-choice__wrapper {

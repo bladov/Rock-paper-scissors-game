@@ -19,9 +19,11 @@ export default {
 
 <template>
   <div class="header-wrapper">
-    <div class="container header-wrapper__container">
-      <HeaderTitle />
-      <GameScore :score="score" />
+    <div class="container">
+      <div class="header-wrapper__container">
+        <HeaderTitle />
+        <GameScore :score="score" />
+      </div>
     </div>
   </div>
 </template>
@@ -32,6 +34,8 @@ export default {
 }
 
 .container {
+  display: flex;
+  justify-content: center;
 }
 
 .header-wrapper__container {
@@ -41,5 +45,8 @@ export default {
   display: flex;
   justify-content: space-between;
   max-width: 600px;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
 }
 </style>

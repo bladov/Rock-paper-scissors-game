@@ -37,12 +37,30 @@ export default {
 <template>
   <div class="player-choice">
     <p class="player-choice__text">{{ resultText }}</p>
-    <GameAction :action="choice" class="player-choice__action" />
+    <GameAction :action="choice" class="player-choice__action" biggest />
   </div>
 </template>
 
 <style scoped lang="scss">
+.player-choice {
+  text-transform: uppercase;
+  text-align: center;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-self: stretch;
+}
+
 .player-choice__action {
   position: relative;
+  flex: 1 0 auto;
+  justify-content: center;
+  align-items: end;
+}
+
+.player-choice__text {
+  @include phone {
+    font-size: 18px;
+  }
 }
 </style>

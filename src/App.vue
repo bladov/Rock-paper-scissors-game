@@ -8,8 +8,8 @@ import { getGameResult } from '../utilits/getGameResult.js'
 const gameAttribute = reactive({
   playerChoice: null,
   botChoice: null,
-  score: 0,
-  result: ''
+  result: '',
+  score: 0
 })
 
 const setGameResult = (result) => {
@@ -20,6 +20,7 @@ const setGameResult = (result) => {
 const gameReset = () => {
   gameAttribute.playerChoice = null
   gameAttribute.botChoice = null
+  gameAttribute.result = ''
 }
 
 watch(
@@ -64,9 +65,6 @@ watch(
 body {
   background: rgb(31, 55, 86);
   background: radial-gradient(circle, rgba(31, 55, 86, 1) 6%, rgba(20, 23, 59, 1) 100%);
-  @include tablets {
-    background: red;
-  }
 }
 
 .container {
@@ -84,6 +82,10 @@ body {
   font-size: 30px;
   font-style: normal;
   color: white;
+
+  @include phone {
+    font-size: 20px;
+  }
 }
 
 .main {

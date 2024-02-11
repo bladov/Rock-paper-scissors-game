@@ -41,6 +41,11 @@ export default {
       type: String,
       required: false,
       default: '0'
+    },
+    biggest: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
 
@@ -74,8 +79,8 @@ export default {
 </script>
 
 <template>
-  <div class="game-action">
-    <div class="game-action__wrapper">
+  <div class="game-action" :class="{ biggest: biggest }">
+    <div class="game-action__wrapper" :class="{ biggest: biggest }">
       <component :is="currentIconComponent" />
     </div>
   </div>
@@ -83,9 +88,9 @@ export default {
 
 <style scoped lang="scss">
 .game-action {
+  //width: 100%;
   position: absolute;
   display: inline-flex;
-  cursor: pointer;
   color: #3b4262;
   top: v-bind(positionTop);
   left: v-bind(positionLeft);
@@ -94,23 +99,14 @@ export default {
   transform: translateX(v-bind(transformX)) translateY(v-bind(transformY));
   transition: 0.3s all linear;
 
-  &:before {
-    position: absolute;
-    content: '';
-    display: block;
-    width: 71%;
-    height: 71%;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 4px 0px 5px #80808091;
-  }
-
-  &:hover {
+  &:not(.biggest):hover {
     filter: drop-shadow(0 0 0.75rem v-bind(currentActionColor));
     scale: 1.02;
     color: v-bind(currentActionColor);
+  }
+
+  &:not(.biggest) {
+    cursor: pointer;
   }
 }
 
@@ -123,6 +119,7 @@ export default {
 }
 
 .game-action__wrapper {
+  position: relative;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -131,5 +128,44 @@ export default {
   background: white;
   border: 15px groove v-bind(currentActionColor);
   border-radius: 50%;
+
+  @include phone {
+    width: 70px;
+    height: 70px;
+  }
+
+  &:before {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 92%;
+    height: 92%;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 4px 0px 5px #80808091;
+  }
+}
+
+.game-action__wrapper.biggest:before {
+  width: 97%;
+  height: 97%;
+}
+
+.game-action__wrapper.biggest {
+  max-width: 300px;
+  height: 300px;
+  flex: 1 1 auto;
+
+  @include tablets {
+    max-width: 250px;
+    height: 250px;
+  }
+
+  @include phone {
+    max-width: 120px;
+    height: 120px;
+  }
 }
 </style>

@@ -29,16 +29,28 @@ export default {
   border-radius: 8px;
   padding: 10px 30px;
   background: white;
+
+  @include phone {
+    padding: 5px 20px;
+  }
 }
 
 .game-score__text {
   font-weight: 400;
   font-size: 25px;
   color: $blue-3;
+
+  @include phone {
+    font-size: 20px;
+  }
 }
 
 .game-score__points {
   font-size: 40px;
   color: $blue-2;
+
+  @include phone {
+    font-size: 30px;
+  }
 }
 </style>

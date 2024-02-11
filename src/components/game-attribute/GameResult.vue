@@ -47,10 +47,68 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.game-result {
+  padding-top: 150px;
+}
+
 .game-result__container {
-  display: flex;
   justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
   align-items: center;
+  justify-items: center;
+  gap: 20px;
+
+  @include tablets {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.game-result__middle {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @include tablets {
+    grid-row-start: 2;
+    grid-column-end: 3;
+    grid-column-start: 1;
+  }
+}
+
+.game-result__text {
+  text-transform: uppercase;
+}
+
+.game-result__btn {
+  cursor: pointer;
+  background: $gray;
+  border: unset;
+  border-radius: 8px;
+  padding: 10px 30px;
+  color: $blue-3;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+  user-select: unset;
+  transition: transform 0.1s linear;
+
+  &:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+
+  @include tablets {
+    padding: 8px 20px;
+    font-size: 18px;
+  }
+
+  @include phone {
+    padding: 5px 15px;
+    font-size: 16px;
+  }
 }
 </style>
