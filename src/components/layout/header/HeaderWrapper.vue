@@ -4,7 +4,16 @@ import GameScore from '@/components/game-attribute/GameScore.vue'
 
 export default {
   name: 'HeaderWrapper',
-  components: { GameScore, HeaderTitle }
+  components: { GameScore, HeaderTitle },
+  props: {
+    score: {
+      type: Number,
+      required: true,
+      validator: (value) => {
+        return value >= 0
+      }
+    }
+  }
 }
 </script>
 
@@ -12,7 +21,7 @@ export default {
   <div class="header-wrapper">
     <div class="container header-wrapper__container">
       <HeaderTitle />
-      <GameScore />
+      <GameScore :score="score" />
     </div>
   </div>
 </template>

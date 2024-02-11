@@ -86,6 +86,7 @@ export default {
   position: absolute;
   display: inline-flex;
   cursor: pointer;
+  color: #3b4262;
   top: v-bind(positionTop);
   left: v-bind(positionLeft);
   right: v-bind(positionRight);
@@ -97,8 +98,8 @@ export default {
     position: absolute;
     content: '';
     display: block;
-    width: 70%;
-    height: 70%;
+    width: 71%;
+    height: 71%;
     border-radius: 50%;
     left: 50%;
     top: 50%;
@@ -109,7 +110,16 @@ export default {
   &:hover {
     filter: drop-shadow(0 0 0.75rem v-bind(currentActionColor));
     scale: 1.02;
+    color: v-bind(currentActionColor);
   }
+}
+
+.game-action:deep(svg *[fill]) {
+  fill: currentColor;
+}
+
+.game-action:deep(svg *[stroke]) {
+  stroke: currentColor;
 }
 
 .game-action__wrapper {
@@ -119,7 +129,7 @@ export default {
   width: 100px;
   height: 100px;
   background: white;
-  border: 15px solid v-bind(currentActionColor);
+  border: 15px groove v-bind(currentActionColor);
   border-radius: 50%;
 }
 </style>

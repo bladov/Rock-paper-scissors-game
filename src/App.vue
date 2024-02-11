@@ -2,16 +2,57 @@
 import HeaderWrapper from '@/components/layout/header/HeaderWrapper.vue'
 import GameChoice from '@/components/game-attribute/GameChoice.vue'
 import GameResult from '@/components/game-attribute/GameResult.vue'
+import { reactive, watch } from 'vue'
+import { getGameResult } from '../utilits/getGameResult.js'
+
+const gameAttribute = reactive({
+  playerChoice: null,
+  botChoice: null,
+  score: 0,
+  result: ''
+})
+
+const setGameResult = (result) => {
+  gameAttribute.playerChoice = result.playerChoice
+  gameAttribute.botChoice = result.botChoice
+}
+
+const gameReset = () => {
+  gameAttribute.playerChoice = null
+  gameAttribute.botChoice = null
+}
+
+watch(
+  () => gameAttribute.playerChoice,
+  () => {
+    if (!gameAttribute.playerChoice) return
+    const result = getGameResult(gameAttribute.playerChoice.id, gameAttribute.botChoice.id)
+
+    gameAttribute.result = result
+
+    if (result === 'won') {
+      gameAttribute.score += 1
+    }
+    if (result === 'lose') {
+      if (gameAttribute.score <= 0) return
+      gameAttribute.score -= 1
+    }
+  }
+)
 </script>
 
 <template>
   <header>
-    <HeaderWrapper />
+    <HeaderWrapper :score="gameAttribute.score" />
   </header>
 
   <main>
-    <GameChoice />
-    <GameResult />
+    <GameResult
+      v-if="gameAttribute.playerChoice"
+      :gameAttribute="gameAttribute"
+      @playAgain="gameReset"
+    />
+    <GameChoice v-else @gameResult="setGameResult" />
   </main>
 
   <footer></footer>

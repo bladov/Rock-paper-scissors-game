@@ -1,13 +1,22 @@
 <script>
 export default {
-  name: 'GameScore'
+  name: 'GameScore',
+  props: {
+    score: {
+      type: Number,
+      required: true,
+      validator: (value) => {
+        return value >= 0
+      }
+    }
+  }
 }
 </script>
 
 <template>
   <div class="game-score">
     <p class="game-score__text">счет</p>
-    <div class="game-score__points">0</div>
+    <div class="game-score__points">{{ score }}</div>
   </div>
 </template>
 

@@ -1,20 +1,32 @@
 <script>
 import PlayerChoice from '@/components/game-attribute/PlayerChoice.vue'
-import { computed, ref } from 'vue'
+import { computed, toRefs } from 'vue'
 
 export default {
   name: 'GameResult',
   components: { PlayerChoice },
+  props: {
+    gameAttribute: {
+      type: Object,
+      required: true
+    }
+  },
+  emits: ['playAgain'],
 
-  setup() {
-    const playersIsWin = ref(false)
+  setup(props) {
+    const { gameAttribute } = toRefs(props)
     const gameResultText = computed(() => {
-      return playersIsWin.value ? 'Вы выйграли!' : 'Вы проиграли'
+      if (gameAttribute.value.result === 'lose') {
+        return 'Вы проиграли'
+      }
+      if (gameAttribute.value.result === 'won') {
+        return 'Вы выйграли!'
+      }
+      return 'Ничья'
     })
 
     return {
-      gameResultText,
-      playersIsWin
+      gameResultText
     }
   }
 }
@@ -23,14 +35,14 @@ export default {
 <template>
   <div class="game-result">
     <div class="container game-result__container">
-      <PlayerChoice :playerId="1" choice="rock" :winner="playersIsWin" />
+      <PlayerChoice :playerId="1" choice="rock" :winner="gameAttribute.result === 'won'" />
       <div class="game-result__middle">
         <p class="game-result__text">
           {{ gameResultText }}
         </p>
-        <button class="game-result__btn">Играть снова</button>
+        <button @click="$emit('playAgain')" class="game-result__btn">Играть снова</button>
       </div>
-      <PlayerChoice :playerId="2" choice="paper" :winner="!playersIsWin" />
+      <PlayerChoice :playerId="2" choice="paper" :winner="gameAttribute.result === 'lose'" />
     </div>
   </div>
 </template>
