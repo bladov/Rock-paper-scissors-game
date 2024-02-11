@@ -1,23 +1,31 @@
 @font-face {
   font-family: 'Circe';
-  src: url('~@/assets/fonts/CirceRegular.woff') format('woff'),
-  url('~@/assets/fonts/CirceRegular.woff2') format('woff2');
+  src: url('@/assets/fonts/CirceRegular.woff') format('woff'),
+  url('@/assets/fonts/CirceRegular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Circe';
-  src: url('~@/assets/fonts/CirceBold.woff') format('woff'),
-  url('~@/assets/fonts/CirceBold.woff2') format('woff2');
+  src: url('@/assets/fonts/CirceBold.woff') format('woff'),
+  url('@/assets/fonts/CirceBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Open Sans';
-  src: url('~@/assets/fonts/OpenSansRegular.woff') format('woff'),
-  url('~@/assets/fonts/OpenSansRegular.woff2') format('woff2');
+  src: url('@/assets/fonts/OpenSansRegular.woff') format('woff'),
+  url('@/assets/fonts/OpenSansRegular.woff2') format('woff2');
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BalsamiqSans';
+  src: url('@/assets/fonts/BalsamiqSans-Bold.woff') format('woff'),
+  url('@/assets/fonts/BalsamiqSans-Bold.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
 }

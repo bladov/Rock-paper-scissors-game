@@ -4,6 +4,7 @@ import GameChoice from '@/components/game-attribute/GameChoice.vue'
 import GameResult from '@/components/game-attribute/GameResult.vue'
 import { onMounted, reactive, watch } from 'vue'
 import { getGameResult } from '../utilits/getGameResult.js'
+import FooterBtns from '@/components/layout/footer/FooterBtns.vue'
 
 const gameAttribute = reactive({
   playerChoice: null,
@@ -68,7 +69,9 @@ onMounted(() => {
     <GameChoice v-else @gameResult="setGameResult" />
   </main>
 
-  <footer></footer>
+  <footer>
+    <FooterBtns />
+  </footer>
 </template>
 
 <style lang="scss">
@@ -89,7 +92,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-family: 'Circe', sans-serif;
+  font-family: 'BalsamiqSans', sans-serif;
   font-weight: 600;
   font-size: 30px;
   font-style: normal;
