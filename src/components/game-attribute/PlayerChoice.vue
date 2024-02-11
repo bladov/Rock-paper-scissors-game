@@ -37,7 +37,7 @@ export default {
 <template>
   <div class="player-choice">
     <p class="player-choice__text">{{ resultText }}</p>
-    <GameAction :action="choice" class="player-choice__action" biggest />
+    <GameAction :action="choice" class="player-choice__action" biggest :winner="winner" />
   </div>
 </template>
 

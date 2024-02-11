@@ -35,14 +35,22 @@ export default {
 <template>
   <div class="game-result">
     <div class="container game-result__container">
-      <PlayerChoice :playerId="1" choice="rock" :winner="gameAttribute.result === 'won'" />
+      <PlayerChoice
+        :playerId="1"
+        :choice="gameAttribute.playerChoice.name"
+        :winner="gameAttribute.result === 'won'"
+      />
       <div class="game-result__middle">
         <p class="game-result__text">
           {{ gameResultText }}
         </p>
         <button @click="$emit('playAgain')" class="game-result__btn">Играть снова</button>
       </div>
-      <PlayerChoice :playerId="2" choice="paper" :winner="gameAttribute.result === 'lose'" />
+      <PlayerChoice
+        :playerId="2"
+        :choice="gameAttribute.botChoice.name"
+        :winner="gameAttribute.result === 'lose'"
+      />
     </div>
   </div>
 </template>
@@ -93,7 +101,7 @@ export default {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 20px;
-  user-select: unset;
+  user-select: none;
   transition: transform 0.1s linear;
 
   &:hover {

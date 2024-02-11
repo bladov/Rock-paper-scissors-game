@@ -46,6 +46,11 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    winner: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
 
@@ -80,7 +85,7 @@ export default {
 
 <template>
   <div class="game-action" :class="{ biggest: biggest }">
-    <div class="game-action__wrapper" :class="{ biggest: biggest }">
+    <div class="game-action__wrapper" :class="{ biggest: biggest, winner: winner }">
       <component :is="currentIconComponent" />
     </div>
   </div>
@@ -145,6 +150,39 @@ export default {
     top: 50%;
     transform: translate(-50%, -50%);
     box-shadow: 4px 0px 5px #80808091;
+  }
+}
+
+.game-action__wrapper.winner {
+  background: linear-gradient(-45deg, v-bind(currentActionColor), rgb(31, 55, 86));
+  background-size: 400% 400%;
+  animation:
+    gradient 5s ease infinite,
+    pulse 3s linear infinite;
+  color: white;
+}
+
+@keyframes pulse {
+  0% {
+    filter: drop-shadow(0 0 0.75rem v-bind(currentActionColor));
+  }
+  50% {
+    filter: drop-shadow(0 0 5rem v-bind(currentActionColor));
+  }
+  100% {
+    filter: drop-shadow(0 0 0.75rem v-bind(currentActionColor));
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 
